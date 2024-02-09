@@ -18,7 +18,9 @@ public class HelloWorld {
         String s = "Hello World!! " + UUID.randomUUID();
         log.info("returning: {}",s);
         return  s;
-    }    @GetMapping
+    }
+
+    @GetMapping("/beer")
     public String helloBeer(){
         String s = "Beer!! Hello World!! " + UUID.randomUUID();
         log.info("returning: {}",s);
