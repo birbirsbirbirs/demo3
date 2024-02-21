@@ -28,8 +28,8 @@ public class HelloWorld {
      */
     private final RestTemplate restTemplate;
 
-    @Value("${URL2:null}")
-    private String urlForService2;
+    @Value("${URL2}")
+    private String urlForService;
 
     @GetMapping
     public String hello() {
@@ -52,7 +52,7 @@ public class HelloWorld {
 
     @GetMapping("/service")
     public String service2Hello() {
-        String responseFromService2 = restTemplate.getForEntity(urlForService2 + "/api/v1/hello", String.class).getBody();
+        String responseFromService2 = restTemplate.getForEntity(urlForService + "/api/v1/hello", String.class).getBody();
         log.info("respond from service 2: {}",responseFromService2);
         return responseFromService2;
     }
