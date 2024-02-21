@@ -1,5 +1,6 @@
 package co.pitam.demo3.controller;
 
+import co.pitam.demo3.entity.Post;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
@@ -8,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.List;
+import java.util.Objects;
 import java.util.UUID;
 
 /**
@@ -52,8 +55,13 @@ public class HelloWorld {
 
     @GetMapping("/service")
     public String service2Hello() {
-        String responseFromService2 = restTemplate.getForEntity(urlForService + "/api/v1/hello", String.class).getBody();
+        String responseFromService2 = restTemplate.getForEntity("http://"+urlForService + "/api/v1/hello", String.class).getBody();
         log.info("respond from service 2: {}",responseFromService2);
         return responseFromService2;
+    }
+
+    @GetMapping("/posts")
+    public List<Post> posts(){
+        return List.of(Objects.requireNonNull(restTemplate.getForEntity("https://jsonplaceholder.typicode.com/posts", Post[].class).getBody()));
     }
 }
