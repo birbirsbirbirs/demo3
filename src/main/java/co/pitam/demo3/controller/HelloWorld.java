@@ -50,7 +50,7 @@ public class HelloWorld {
         return s;
     }
 
-    @GetMapping("/service2")
+    @GetMapping("/service")
     public String service2Hello() {
         String responseFromService2 = restTemplate.getForEntity(urlForService2 + "/api/v1/hello", String.class).getBody();
         log.info("respond from service 2: {}",responseFromService2);
