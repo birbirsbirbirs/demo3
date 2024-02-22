@@ -20,7 +20,7 @@ import java.util.UUID;
  * </p>
  */
 @RestController
-@RequestMapping("/api/v1/hello")
+@RequestMapping("/demo3")
 @RequiredArgsConstructor
 @Slf4j
 public class HelloWorld {
@@ -55,7 +55,7 @@ public class HelloWorld {
 
     @GetMapping("/service")
     public String service2Hello() {
-        String responseFromService2 = restTemplate.getForEntity("http://"+urlForService + "/api/v1/hello", String.class).getBody();
+        String responseFromService2 = restTemplate.getForEntity("http://"+urlForService+"/demo3", String.class).getBody();
         log.info("respond from service 2: {}",responseFromService2);
         return responseFromService2;
     }
