@@ -1,4 +1,4 @@
-URL2: localhost:8080/demo3/api/v2
+URL2: localhost:9000
 server:
   servlet:
     context-path: /demo3/api/v2
